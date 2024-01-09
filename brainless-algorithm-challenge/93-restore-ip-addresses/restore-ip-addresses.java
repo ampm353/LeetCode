@@ -5,7 +5,15 @@ class Solution {
         // String, Backtracking
 
         List<String> result = new ArrayList<>();
-        
+
+        /**
+        * backtracking parameter 
+        * - index : 커서 위치
+        * - count : dot 의 갯수
+        * - s : 원본 string
+        * - ip : 현재까지 작성된 ip
+        * - result : 유효한 ip 목록
+        */
         backtracking(0, 0, s, "", result);
 
         return result;
@@ -14,12 +22,13 @@ class Solution {
     public void backtracking(int index, int count, String s, String ip, List<String> result){
 
         for(int i = 1 ; i < 4 ; i ++){
-            int newCount = count;
+            
             if(index + i  > s.length()){
                 break;
             }
+
             String address = s.substring(index, index + i);
-            String newIp = "" + ip;
+
             if(Integer.parseInt(address) > 255 
             || Integer.parseInt(address) < 0){
                 continue;
@@ -31,14 +40,19 @@ class Solution {
                 } 
             }
 
+            // backtracking 결과 뒤로 갈 경우, 
+            // 변수가 이전 값을 가지고 있지 않기 위해 매번 지역변수 생성
+            int newCount = count;
+            String newIp = "" + ip;
+            
+
             if(newIp.length() != 0){
                 newIp = newIp + ".";
+                newCount ++;
             }
-
             newIp = newIp + address;
-
-            newCount ++;
-            if(newCount == 4
+            
+            if(newCount == 3
             && newIp.length() == s.length() + 3){
                 result.add(newIp);
                 continue;
