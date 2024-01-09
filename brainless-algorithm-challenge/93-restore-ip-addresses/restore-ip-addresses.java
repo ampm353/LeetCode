@@ -14,12 +14,12 @@ class Solution {
         * - ip : 현재까지 작성된 ip
         * - result : 유효한 ip 목록
         */
-        backtracking(0, 0, s, "", result);
+        backtracking(0, 0, s, new StringBuffer(), result);
 
         return result;
     }
 
-    public void backtracking(int index, int count, String s, String ip, List<String> result){
+    public void backtracking(int index, int count, String s, StringBuffer ip, List<String> result){
 
         for(int i = 1 ; i < 4 ; i ++){
             
@@ -43,18 +43,18 @@ class Solution {
             // backtracking 결과 뒤로 갈 경우, 
             // 변수가 이전 값을 가지고 있지 않기 위해 매번 지역변수 생성
             int newCount = count;
-            String newIp = "" + ip;
+            StringBuffer newIp = new StringBuffer(ip);
             
 
             if(newIp.length() != 0){
-                newIp = newIp + ".";
+                newIp.append(".");
                 newCount ++;
             }
-            newIp = newIp + address;
+            newIp.append(address);
             
             if(newCount == 3
             && newIp.length() == s.length() + 3){
-                result.add(newIp);
+                result.add(newIp.toString());
                 continue;
             }
 
