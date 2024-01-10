@@ -13,7 +13,9 @@
  *     }
  * }
  */
-class Solution {
+ /**
+  * 전위 순회(Preorder Traversal) 방식을 떠올려서 작성한 풀이
+ class Solution {
     public int maxDepth(TreeNode root) {
         
         if(root == null){
@@ -55,5 +57,21 @@ class Solution {
 
         return maxLen;
 
+    }
+}
+  */
+/** 아래는 Recursion(재귀) 를 활용한 방법
+ * (Solutions 을 보고 참고함)
+ */
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+
+        return Math.max(left,right) + 1;
     }
 }
