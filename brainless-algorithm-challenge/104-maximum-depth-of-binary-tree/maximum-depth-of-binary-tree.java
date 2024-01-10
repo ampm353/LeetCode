@@ -16,10 +16,6 @@
 class Solution {
     public int maxDepth(TreeNode root) {
         
-        // 현재 값
-        // 왼쪽 값
-        // 오른쪽 값
-        //
         if(root == null){
             return 0;
         }
