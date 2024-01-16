@@ -27,6 +27,14 @@ class Solution {
         int rem = quo % 26;
         quo = quo / 26;
 
+        // 26
+        // Expect : Z
+        //
+        // 몫:1 나머지: 0  Z
+        // 1
+        // 몫:0 나머지: 1  A
+        // AZ
+        // -> 때문에 나머지가 0인(Z) 경우 몫을 하나 빼준다.
         if(rem == 0){
             rem = 26;
             quo -= 1;
