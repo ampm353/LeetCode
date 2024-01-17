@@ -1,5 +1,3 @@
-import java.util.*; 
-
 class Solution {
     public boolean uniqueOccurrences(int[] arr) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -11,7 +9,6 @@ class Solution {
 
         // 중복된 값을 체크할 Set 생성
         Set<Integer> values = new HashSet<>(map.values());
-        
         return values.size() == map.size();
     }
 }
