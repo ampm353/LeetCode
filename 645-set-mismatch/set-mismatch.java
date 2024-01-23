@@ -1,26 +1,18 @@
 class Solution {
     public int[] findErrorNums(int[] nums) {
-        int[] result = new int[2];
-        Arrays.sort(nums);
         
-        if(nums[0] != 1){
-            // 누락된 숫자
-            result[1] = 1;
-        }
-        for(int i = 0; i < nums.length-1; i ++){
-            if(nums[i] == nums[i+1]){
-                // 중복된 숫자
-                result[0] = nums[i];
-            }else if(nums[i]+1 != nums[i+1]){
-                // 누락된 숫자
-                result[1] = nums[i]+1;
-            }
+        int[] counts = new int [nums.length];
+
+        for(int num : nums){
+            counts[num-1]++;
         }
 
-        if(nums[nums.length-1] != nums.length){
-            result[1] = nums.length;
-        }
+        int[] result = new int[2];
 
+        for(int i = 0 ; i < counts.length; i++){
+            if(counts[i] == 0) result[1] = i+1;
+            if(counts[i] == 2) result[0] = i+1;
+        }
         return result;
     }
 }
