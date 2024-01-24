@@ -32,7 +32,7 @@ class Solution {
                 if (node.left == null && node.right == null) {
                     // check if at most one digit has an odd frequency
                     if ((path & (path - 1)) == 0) {
-                        count++;
+                        ++count;
                     }
                 } else {
                     stack.push(new Pair(node.right, path));
